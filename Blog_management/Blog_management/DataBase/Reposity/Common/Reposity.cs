@@ -33,6 +33,17 @@ namespace Blog_management.DataBase.Reposity.Common
             }
             return entities;
         }
+        public TEntity Get(Predicate<TEntity> expression)
+        {
+            foreach (TEntity entry in DBcontect)
+            {
+                if (expression(entry))
+                {
+                    return entry;
+                }
+            }
+            return null;
+        }
 
     }
 }
