@@ -55,6 +55,10 @@ namespace Blog_management.DataBase.Reposity.Common
             }
             return default(TEntity);
         }
+        public void Delete(TEntity entry)
+        {
+            DBcontect.Remove(entry);
+        }
 
     }
 }
