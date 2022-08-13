@@ -17,5 +17,9 @@ namespace Blog_management.DataBase.Reposity.Common
             DBcontect.Add(entry);
             return entry;
         }
+        public List<TEntity> GetAll()
+        {
+            return DBcontect;
+        }
     }
 }
