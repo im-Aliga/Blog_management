@@ -34,6 +34,17 @@ namespace Blog_management.AplicationLogic
             }
             return lastname;
         }
+        public static string GetEmail()
+        {
+            Console.Write("Please enter user's email : ");
+            string email = Console.ReadLine();
+            while (!UserValidations.IsValidEmail(email) && !UserValidations.IsUserExitsUnique(email))
+            {
+                Console.Write("Please enter correct user's email : ");
+                email = Console.ReadLine();
+            }
+            return email;
+        }
 
     }
 
