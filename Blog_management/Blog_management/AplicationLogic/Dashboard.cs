@@ -70,6 +70,28 @@ namespace Blog_management.AplicationLogic
                     Console.WriteLine("user hass been update");
 
                 }
+                else if (command == "/reports")
+                {
+                    ReportReposity reportReposity = new ReportReposity();
+                    List<Report> reports = reportReposity.GetAll();
+                    if (reports != null)
+                    {
+                        int count = 1;
+                        foreach (Report report in reports)
+                        {
+                            Console.WriteLine($"{count}." + report.GetInfo());
+                            count++;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("empty");
+                    }
+
+
+
+
+                }
 
             }
 
