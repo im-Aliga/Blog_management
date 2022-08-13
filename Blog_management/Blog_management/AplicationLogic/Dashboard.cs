@@ -396,6 +396,41 @@ namespace Blog_management.AplicationLogic
 
 
                 }
+                else if (command == "/delete-blog")
+                {
+                    Console.Write("Please enter blog's Blog code : ");
+                    string blogCode = Console.ReadLine();
+                    Blog blog = blogRepo.GetById(blogCode);
+                    List<BlogComments> comments = commentRepo.GetAll(c => c.WhichBlog == blog);
+                    List<Inbox> inboxs = inboxRepo.GetAll(m => m.Notfication.Contains(blog.Id));
+
+                    if (blog.Owner != CurrentUser)
+                    {
+                        Console.WriteLine("This is not your's Blog");
+                    }
+                    else if (blog == null)
+                    {
+                        Console.WriteLine("Blog  not found");
+                    }
+
+                    else if (blog.Owner == CurrentUser)
+                    {
+                        blogRepo.Delete(blog);
+
+                        foreach (Inbox message in inboxs)
+                        {
+                            inboxRepo.Delete(message);
+                        }
+                        foreach (BlogComments comment in comments)
+                        {
+                            commentRepo.Delete(comment);
+
+                        }
+                        Console.WriteLine("Blog has been deleted");
+                    }
+
+
+                }
 
             }
         }
