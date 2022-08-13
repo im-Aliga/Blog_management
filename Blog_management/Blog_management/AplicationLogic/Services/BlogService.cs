@@ -159,5 +159,18 @@ namespace Blog_management.AplicationLogic.Services
             }
             return commentContent;
         }
+        public static string GetBlogTitle()
+        {
+            Console.Write("Please enter blog title: ");
+            string blogTitle = Console.ReadLine();
+            while (!BlogValidations.IsValidTitle(blogTitle))
+            {
+                Console.WriteLine("Please enter blog title again: ");
+                blogTitle = Console.ReadLine();
+            }
+            return blogTitle;
+
+        }
+
     }
 }
