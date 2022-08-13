@@ -187,6 +187,18 @@ namespace Blog_management.AplicationLogic
                     UserReposity.ShowUsers();
 
                 }
+                else if (command == "/show-auditing-blogs")
+                {
+                    List<Blog> blogs = blogRepo.GetAll();
+                    foreach (Blog blog in blogs)
+                    {
+                        if (blog.BlogStatus == BlogStatus.Created)
+                        {
+                            Console.WriteLine(blog.BlogInfo());
+                        }
+                    }
+
+                }
 
 
             }
