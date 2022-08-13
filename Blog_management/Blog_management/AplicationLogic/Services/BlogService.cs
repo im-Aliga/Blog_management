@@ -38,6 +38,50 @@ namespace Blog_management.AplicationLogic.Services
             }
 
         }
+        public static void FindBlogByFilter()
+        {
+            Console.WriteLine("/Title");
+            Console.WriteLine("/Lastname");
+            while (true)
+            {
+                Console.Write("Enter suitable command: ");
+                string command = Console.ReadLine();
 
-    }
+
+                if (command == "/Title")
+                {
+                    Console.WriteLine(" ");
+                    Console.Write("Please enter blog's title: ");
+                    string title = Console.ReadLine();
+                    int count = 1;
+                    foreach (Blog blog in blogRepo.GetAll())
+                    {
+                        if (blog.BlogTitle == title && blog.BlogStatus == BlogStatus.Approve)
+                        {
+                            Console.WriteLine(blog.BlogInfo());
+
+                            foreach (BlogComments comment in commentRepo.GetAll(c => c.WhichBlog == blog))
+                            {
+
+
+                                Console.WriteLine($"{count}{"."}  { comment.GetCommentInfo()}");
+                                count++;
+
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("this title blog's Not found");
+                            break;
+
+                        }
+
+                    }
+
+
+
+
+                }
+
+            }
 }
