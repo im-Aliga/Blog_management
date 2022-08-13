@@ -175,6 +175,12 @@ namespace Blog_management.AplicationLogic
                     }
 
 
+                   
+                }
+                else if (command == "/log out")
+                {
+                    Program.Main(new string[] { });
+                    break;
                 }
 
             }
