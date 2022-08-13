@@ -24,6 +24,27 @@ namespace Blog_management.AplicationLogic
             Admin admin1 = (Admin)UserReposity.GetUerByEmail(CurrentUser.Email);
 
             Console.WriteLine(admin1.GetInfo());
+            string[] commands = { "/add-user",
+                                  "/update-user",
+                                  "/reports",
+                                  "/remove-user",
+                                  "/add-admin",
+                                  "/show-admins",
+                                  "/update-admin ",
+                                  "/remove-admin",
+                                  "/show-users",
+                                  "/approve-blog",
+                                  "/reject-blog",
+                                  "/show-auditing-blogs",
+                                  "/log out" };
+
+            foreach (string command in commands)
+            {
+                Console.WriteLine(command);
+            }
+
+
+
         }
 
     }
