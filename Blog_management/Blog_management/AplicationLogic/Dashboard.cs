@@ -42,7 +42,7 @@ namespace Blog_management.AplicationLogic
             {
                 Console.WriteLine(command);
             }
-            while(true)
+            while (true)
             {
 
                 Console.WriteLine("");
@@ -175,7 +175,7 @@ namespace Blog_management.AplicationLogic
                     }
 
 
-                   
+
                 }
                 else if (command == "/log out")
                 {
@@ -199,6 +199,30 @@ namespace Blog_management.AplicationLogic
                     }
 
                 }
+                else if (command == "/approve-blog")
+                {
+                    Console.Write("Please enter blog's BlogCode: ");
+                    string blogCode = Console.ReadLine();
+                    Blog blog = blogRepo.GetById(blogCode);
+                    if (blog != null)
+                    {
+                        if (blog.BlogStatus == BlogStatus.Created)
+                        {
+
+                            blog.BlogStatus = BlogStatus.Approve;
+                            Inbox message = new Inbox($"This blog {blog.Id} Approved by Admin", blog.Owner);
+                            inboxRepo.Add(message);
+                            Console.WriteLine("Blog has been aproved");
+
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("not found");
+                    }
+
+                }
+
 
 
             }
