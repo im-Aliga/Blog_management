@@ -261,4 +261,13 @@ namespace Blog_management.AplicationLogic
         }
 
     }
+
+    public static partial class Dashboard
+    {
+        public static void UserPanel()
+        {
+
+        }
+
+    }
 }
