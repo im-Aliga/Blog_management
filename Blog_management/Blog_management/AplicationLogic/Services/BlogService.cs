@@ -1,4 +1,5 @@
-﻿using Blog_management.DataBase.Model;
+﻿using Blog_management.AplicationLogic.Validations;
+using Blog_management.DataBase.Model;
 using Blog_management.DataBase.Reposity;
 using System;
 using System.Collections.Generic;
@@ -146,6 +147,17 @@ namespace Blog_management.AplicationLogic.Services
                 Console.WriteLine("This code's blog not found");
             }
 
+        }
+        public static string GetComment()
+        {
+            Console.Write("Please enter comment content: ");
+            string commentContent = Console.ReadLine();
+            while (!CommentValidations.IsValidContent(commentContent))
+            {
+                Console.Write("Please enter comment content again: ");
+                commentContent = Console.ReadLine();
+            }
+            return commentContent;
         }
     }
 }
