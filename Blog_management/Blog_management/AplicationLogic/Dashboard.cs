@@ -182,6 +182,12 @@ namespace Blog_management.AplicationLogic
                     Program.Main(new string[] { });
                     break;
                 }
+                else if (command == "/show-users")
+                {
+                    UserReposity.ShowUsers();
+
+                }
+
 
             }
 
