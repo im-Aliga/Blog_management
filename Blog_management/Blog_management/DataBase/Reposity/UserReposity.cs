@@ -33,5 +33,12 @@ namespace Blog_management.DataBase.Reposity
             DBcontect.Add(new User("Ceyhun", "Hacizade", "haci@gmail.com", "123321", 3));
             DBcontect.Add(new User("Revan", "Mahmudov", "mahmud@gmail.com", "123321", 4));
         }
+        public static User AddUser(string firstName, string lastName, string email, string password)
+        {
+            User user = new User(firstName, lastName, email, password, IdCounter);
+            DBcontect.Add(user);
+            return user;
+
+        }
     }
 }
