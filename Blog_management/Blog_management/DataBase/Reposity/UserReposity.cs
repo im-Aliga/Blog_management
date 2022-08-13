@@ -81,5 +81,16 @@ namespace Blog_management.DataBase.Reposity
             }
             return null;
         }
+        public static User GetUerByEmail(string email)
+        {
+            foreach (User user in DBcontect)
+            {
+                if (user.Email == email)
+                {
+                    return user;
+                }
+            }
+            return null;
+        }
     }
 }
