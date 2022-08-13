@@ -22,5 +22,19 @@ namespace Blog_management.AplicationLogic
             }
             return firstName;
         }
+        public static string GetLastname()
+        {
+
+            Console.Write("Please enter user's last name :");
+            string lastname = Console.ReadLine();
+            while (!UserValidations.IsValidLastName(lastname))
+            {
+                Console.WriteLine("Please enter correct user's lastname : ");
+                lastname = Console.ReadLine();
+            }
+            return lastname;
+        }
+
     }
+
 }
