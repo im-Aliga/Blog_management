@@ -45,6 +45,26 @@ namespace Blog_management.AplicationLogic
             }
             return email;
         }
+        public static string GetPassword()
+        {
+            Console.Write("Please enter user's password : ");
+            string password = Console.ReadLine();
+
+            while (!UserValidations.IsValidPassword(password))
+            {
+                Console.WriteLine("Please enter again user's password correctly : ");
+                password = Console.ReadLine();
+            }
+            Console.WriteLine("Please enter again user's password : ");
+            string confirmpassword = Console.ReadLine();
+            while (!UserValidations.IsPasswordsMatch(password, confirmpassword))
+            {
+                Console.WriteLine("No match passwords");
+                confirmpassword = Console.ReadLine();
+            }
+            return password;
+
+        }
 
     }
 
