@@ -387,6 +387,16 @@ namespace Blog_management.AplicationLogic
                         Console.WriteLine("empty");
                     }
                 }
+
+                else if (command == "/add-blog")
+                {
+                    Blog blog = new Blog(CurrentUser, BlogService.GetBlogTitle(), BlogService.GetBlogContent(), BlogStatus.Created);
+                    blogRepo.Add(blog);
+                    Console.WriteLine("Blog added succesfully");
+
+
+                }
+
             }
         }
 
