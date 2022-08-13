@@ -128,5 +128,20 @@ namespace Blog_management.DataBase.Reposity
             }
 
         }
+        public static void ShowUsers()
+        {
+            Reposity<User, int> baseRepo = new Reposity<User, int>();
+            List<User> users = baseRepo.GetAll();
+            foreach (User user in users)
+            {
+                if (user is not Admin)
+                {
+                    Console.WriteLine(user.GetInfo());
+                }
+
+            }
+
+
+        }
     }
 }
