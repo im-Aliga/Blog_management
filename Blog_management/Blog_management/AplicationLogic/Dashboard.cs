@@ -52,6 +52,24 @@ namespace Blog_management.AplicationLogic
                 {
                     Autentication.Resgister();
                 }
+                else if (command == "/update-user")
+                {
+                    Console.Write("Please enter user's email: ");
+                    string email = Console.ReadLine();
+                    User user = UserReposity.GetUerByEmail(email);
+                    if (user == null)
+                    {
+                        Console.WriteLine("User not found!");
+                    }
+                    else if (user is Admin)
+                    {
+                        Console.WriteLine("This email is admin's email");
+                    }
+                    User updateUser = new User(Autentication.GetName(), Autentication.GetLastname());
+                    UserReposity.UpdateForUser(email, updateUser);
+                    Console.WriteLine("user hass been update");
+
+                }
 
             }
 
