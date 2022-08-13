@@ -110,6 +110,11 @@ namespace Blog_management.AplicationLogic
 
 
                 }
+                else if (command == "/add-admin")
+                {
+                    Admin admin = new Admin(Autentication.GetName(), Autentication.GetLastname(), Autentication.GetEmail(), Autentication.GetPassword());
+                    baserepo.Add(admin);
+                }
 
             }
 
