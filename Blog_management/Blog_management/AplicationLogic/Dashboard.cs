@@ -149,6 +149,33 @@ namespace Blog_management.AplicationLogic
                     }
 
                 }
+                else if (command == "/remove-admin")
+                {
+                    Console.Write("Please enter admin's mail : ");
+                    string email = Console.ReadLine();
+                    User admin = UserReposity.GetUerByEmail(email);
+                    if (admin.Email == CurrentUser.Email)
+                    {
+                        Console.WriteLine("This is your's email");
+                    }
+                    else if (admin == null)
+                    {
+                        Console.WriteLine("Admin is not found");
+                    }
+                    else if (admin is User)
+                    {
+                        Console.WriteLine("This is user's email");
+                    }
+                    else if (admin is Admin)
+                    {
+                        baserepo.Delete(admin);
+                        User user = new User(admin.FirstName, admin.LastName, admin.Email, admin.Password, admin.Id);
+                        baserepo.Add(user);
+                        Console.WriteLine("Admin has been romoved!");
+                    }
+
+
+                }
 
             }
 
