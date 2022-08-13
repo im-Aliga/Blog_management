@@ -57,5 +57,17 @@ namespace Blog_management.DataBase.Reposity
             }
             return false;
         }
+        public static bool GetUserByEmailAndPassword(string email, string password)
+        {
+            foreach (User user in DBcontect)
+            {
+                if (Equals(user.Email, email) && Equals(user.Password, password))
+                {
+                    return true;
+                }
+
+            }
+            return false;
+        }
     }
 }
