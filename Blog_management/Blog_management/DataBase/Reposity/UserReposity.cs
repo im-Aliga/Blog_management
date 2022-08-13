@@ -92,5 +92,20 @@ namespace Blog_management.DataBase.Reposity
             }
             return null;
         }
+        //public static User Update(int id, string firstname)
+        //{
+        //    User user = GetUserById(id);
+        //    user.FirstName = firstname;
+        //    user.UpdateAt = DateTime.Now;
+        //    return user;
+        //}
+        public static User UpdateForUser(string email, User user)
+        {
+            User updateUsers = GetUerByEmail(email);
+            updateUsers.FirstName = user.FirstName;
+            updateUsers.LastName = user.LastName;
+            return updateUsers;
+
+        }
     }
 }
