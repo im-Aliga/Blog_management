@@ -40,5 +40,11 @@ namespace Blog_management.DataBase.Reposity
             return user;
 
         }
+        public static User AddUser(string firstName, string lastName, string email, string password, int id)
+        {
+            User user = new User(firstName, lastName, email, password, id);
+            DBcontect.Add(user);
+            return user;
+        }
     }
 }
