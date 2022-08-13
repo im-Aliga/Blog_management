@@ -11,6 +11,24 @@ namespace Blog_management.AplicationLogic
 {
     public class Autentication
     {
+        public static void Resgister()
+        {
+            string firstName = GetName();
+            string lastName = GetLastname();
+            string email = GetEmail();
+            string password = GetPassword();
+
+            if (UserValidations.IsValidFirstName(firstName) &
+                UserValidations.IsValidLastName(lastName) &
+                UserValidations.IsValidEmail(email) &
+                UserValidations.IsValidPassword(password))
+            {
+                User user = UserReposity.AddUser(firstName, lastName, email, password);
+                Console.WriteLine($"User added to system, his/her details are : {user.GetInfo()}");
+
+            }
+
+        }
         public static string GetName()
         {
             Console.Write("Please enter user's name : ");
