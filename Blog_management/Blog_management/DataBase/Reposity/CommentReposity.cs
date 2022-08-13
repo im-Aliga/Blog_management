@@ -6,7 +6,5 @@ using System.Threading.Tasks;
 
 namespace Blog_management.DataBase.Reposity
 {
-    internal class CommentReposity
-    {
-    }
+    
 }
