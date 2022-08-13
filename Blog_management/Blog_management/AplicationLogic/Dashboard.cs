@@ -119,6 +119,36 @@ namespace Blog_management.AplicationLogic
                 {
                     UserReposity.ShowAdmins();
                 }
+                else if (command == "/update-admin")
+                {
+                    Console.Write("Please enter admin's email");
+                    string email = Console.ReadLine();
+                    User admin = UserReposity.GetUerByEmail(email);
+                    if (admin.Email == CurrentUser.Email)
+                    {
+                        Console.WriteLine("This email is your's email");
+                    }
+                    else if (email == null)
+                    {
+                        Console.WriteLine("This email is not found");
+                    }
+                    else if (admin is Admin)
+                    {
+                        Admin updateAdmin = new Admin(Autentication.GetName(), Autentication.GetLastname());
+                        UserReposity.UpdateForAdmin(email, updateAdmin);
+                        Console.WriteLine("Admin has been updated");
+
+                    }
+                    else if (admin is User)
+                    {
+                        Console.WriteLine("This email is user's email");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Not Found");
+                    }
+
+                }
 
             }
 
