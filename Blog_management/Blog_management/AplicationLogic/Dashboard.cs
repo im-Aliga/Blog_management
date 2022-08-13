@@ -359,6 +359,16 @@ namespace Blog_management.AplicationLogic
                     }
 
                 }
+                else if (command == "/inbox")
+                {
+                    InboxReposity inboxRepository = new InboxReposity();
+                    int counter = 1;
+                    foreach (Inbox inbox in inboxRepository.GetAll(i => i.User == CurrentUser))
+                    {
+                        Console.WriteLine(counter + "." + inbox.Notfication);
+                        counter++;
+                    }
+                }
             }
         }
 
