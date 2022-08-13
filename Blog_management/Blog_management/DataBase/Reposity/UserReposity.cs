@@ -69,5 +69,17 @@ namespace Blog_management.DataBase.Reposity
             }
             return false;
         }
+        public static User GetUserById(int id)
+        {
+            foreach (User user in DBcontect)
+            {
+                if (user.Id == id)
+                {
+                    return user;
+
+                }
+            }
+            return null;
+        }
     }
 }
