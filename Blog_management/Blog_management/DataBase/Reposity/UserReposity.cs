@@ -107,5 +107,12 @@ namespace Blog_management.DataBase.Reposity
             return updateUsers;
 
         }
+        public static User UpdateForAdmin(string email, Admin admin)
+        {
+            User updateAdmin = GetUerByEmail(email);
+            updateAdmin.FirstName = admin.FirstName;
+            updateAdmin.LastName = admin.LastName;
+            return updateAdmin;
+        }
     }
 }
