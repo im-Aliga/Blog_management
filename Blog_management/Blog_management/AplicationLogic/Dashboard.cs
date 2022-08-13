@@ -92,6 +92,24 @@ namespace Blog_management.AplicationLogic
 
 
                 }
+                else if (command == "/remove-user")
+                {
+                    Console.Write("Please enter user's email");
+                    string email = Console.ReadLine();
+                    User user = UserReposity.GetUerByEmail(email);
+                    if (user == null)
+                    {
+                        Console.WriteLine("User is not found!");
+                    }
+                    else if (user is Admin)
+                    {
+                        Console.WriteLine("This email is Admin's email");
+                    }
+                    baserepo.Delete(user);
+                    Console.WriteLine("user deleted succesfully");
+
+
+                }
 
             }
 
