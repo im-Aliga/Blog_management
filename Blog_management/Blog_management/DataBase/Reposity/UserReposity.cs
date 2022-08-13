@@ -113,6 +113,20 @@ namespace Blog_management.DataBase.Reposity
             updateAdmin.FirstName = admin.FirstName;
             updateAdmin.LastName = admin.LastName;
             return updateAdmin;
+
+        }
+        public static void ShowAdmins()
+        {
+            Reposity<User, int> baseRepo = new Reposity<User, int>();
+            List<User> users = baseRepo.GetAll();
+            foreach (User user in users)
+            {
+                if (user is Admin)
+                {
+                    Console.WriteLine(user.GetInfo());
+                }
+            }
+
         }
     }
 }
