@@ -59,6 +59,14 @@ namespace Blog_management.DataBase.Reposity.Common
         {
             DBcontect.Remove(entry);
         }
+        //public TEntity Update(Tid id, TEntity newEntery)
+        //{
+        //    TEntity entry = GetById(id);
+        //    newEntery.RegistrationTime = entry.RegistrationTime;
+        //    newEntery.Id = entry.Id;
+        //    entry = newEntery;
+        //    return entry;
+        //}
 
     }
 }
