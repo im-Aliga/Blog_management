@@ -247,6 +247,10 @@ namespace Blog_management.AplicationLogic
 
 
                 }
+                else
+                {
+                    Console.WriteLine("Command not found");
+                }
 
 
 
