@@ -119,5 +119,33 @@ namespace Blog_management.AplicationLogic.Services
 
 
         }
+        public static void FindBlogByCode()
+        {
+            Console.Write("Please enter blog code: ");
+            string blogCode = Console.ReadLine();
+            Blog blog = blogRepo.GetById(blogCode);
+            int count = 1;
+            if (blog != null)
+            {
+
+                if (blog.BlogStatus == BlogStatus.Approve)
+                {
+                    Console.WriteLine(blog.BlogInfo());
+                    foreach (BlogComments comment in commentRepo.GetAll(c => c.WhichBlog == blog))
+                    {
+                        Console.WriteLine($"{count}" + comment.GetCommentInfo());
+                        count++;
+
+
+                    }
+
+                }
+            }
+            else
+            {
+                Console.WriteLine("This code's blog not found");
+            }
+
+        }
     }
 }
