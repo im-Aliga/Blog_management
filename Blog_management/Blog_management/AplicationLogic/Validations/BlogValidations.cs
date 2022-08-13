@@ -18,5 +18,14 @@ namespace Blog_management.AplicationLogic.Validations
             Console.WriteLine("Title length sould be between 10 and 35");
             return false;
         }
+        public static bool IsValidContent(string content)
+        {
+            if (content.Length >= 20 & content.Length <= 45)
+            {
+                return true;
+            }
+            Console.WriteLine("Content length sould be between 10 and 35");
+            return false;
+        }
     }
 }
