@@ -21,5 +21,18 @@ namespace Blog_management.DataBase.Reposity.Common
         {
             return DBcontect;
         }
+        public List<TEntity> GetAll(Predicate<TEntity> predicate)
+        {
+            List<TEntity> entities = new List<TEntity>();
+            foreach (TEntity entity in DBcontect)
+            {
+                if (predicate(entity))
+                {
+                    entities.Add(entity);
+                }
+            }
+            return entities;
+        }
+
     }
 }
