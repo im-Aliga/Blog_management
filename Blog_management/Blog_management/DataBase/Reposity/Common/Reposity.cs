@@ -44,6 +44,17 @@ namespace Blog_management.DataBase.Reposity.Common
             }
             return null;
         }
+        public TEntity GetById(Tid id)
+        {
+            foreach (TEntity entry in DBcontect)
+            {
+                if (Equals(entry.Id, id))
+                {
+                    return entry;
+                }
+            }
+            return default(TEntity);
+        }
 
     }
 }
