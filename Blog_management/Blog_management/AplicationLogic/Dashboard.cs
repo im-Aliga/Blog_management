@@ -1,4 +1,5 @@
-﻿using Blog_management.DataBase.Model;
+﻿using Blog_management.AplicationLogic.Services;
+using Blog_management.DataBase.Model;
 using Blog_management.DataBase.Reposity;
 using Blog_management.DataBase.Reposity.Common;
 using System;
@@ -335,6 +336,27 @@ namespace Blog_management.AplicationLogic
                 else if (command == "/log out")
                 {
                     Program.Main(new string[] { });
+
+                }
+                else if (command == "/add-comment")
+                {
+                    Console.Write("Please enter blog code: ");
+                    string blogCode = Console.ReadLine();
+                    BlogReposity blogReposity = new BlogReposity();
+                    Blog blog = blogReposity.GetById(blogCode);
+                    if (blog != null)
+                    {
+                        BlogComments comments = new BlogComments(blog, CurrentUser, BlogService.GetComment());
+                        commentRepo.Add(comments);
+                        Inbox inbox = new Inbox($"this blog code'{blog.Id} {blog.Owner.FirstName} {blog.Owner.LastName} added comment", blog.Owner);
+                        inboxRepo.Add(inbox);
+                        Console.WriteLine("Comment added succesfully");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("Blog Not Found");
+                    }
 
                 }
             }
