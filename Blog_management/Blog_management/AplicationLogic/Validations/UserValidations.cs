@@ -50,5 +50,19 @@ namespace Blog_management.AplicationLogic.Validations
 
             return false;
         }
+        public static bool IsValidPassword(string password)
+        {
+            Regex regex = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
+
+
+            if (regex.IsMatch(password))
+            {
+                return true;
+            }
+
+            Console.WriteLine("Daxil etdiyiniz sifre telebleri odemir");
+
+            return false;
+        }
     }
 }
