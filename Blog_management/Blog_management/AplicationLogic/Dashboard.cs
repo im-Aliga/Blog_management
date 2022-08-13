@@ -222,6 +222,32 @@ namespace Blog_management.AplicationLogic
                     }
 
                 }
+                else if (command == "/reject-blog")
+                {
+                    Console.WriteLine("Please enter blog's BlogCode: ");
+                    string blogCode = Console.ReadLine();
+                    Blog blog = blogRepo.GetById(blogCode);
+                    if (blog != null)
+                    {
+
+                        if (blog.BlogStatus == BlogStatus.Created)
+                        {
+                            blog.BlogStatus = BlogStatus.Approve;
+                            Inbox message = new Inbox($"This blog {blog.Id} Rejected by Admin", blog.Owner);
+                            inboxRepo.Add(message);
+                            Console.WriteLine("Blog has been Rejected");
+
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("not found");
+                    }
+
+
+
+                }
+
 
 
 
