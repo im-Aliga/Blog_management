@@ -34,5 +34,21 @@ namespace Blog_management.AplicationLogic.Validations
             Console.WriteLine("The last name you entered is incorrect, make sure that the last name contains only letters, the first letter is capitalized, and the length is greater than 3 and less than 30.");
             return false;
         }
+        public static bool IsValidEmail(string email)
+        {
+            Regex regex = new Regex(@"^[A-Za-z0-9]{3,20}@code\.edu\.az$");
+
+            if (regex.IsMatch(email))
+            {
+                return true;
+            }
+            Console.WriteLine("Receent can consist of only letters and numbers, the total length can be min 10 max 30,");
+            Console.WriteLine("Separator - there must be an @ in between");
+            Console.WriteLine("Domain - can only end with 'code.edu.az'");
+
+
+
+            return false;
+        }
     }
 }
