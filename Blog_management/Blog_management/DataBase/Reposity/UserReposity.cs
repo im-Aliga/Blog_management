@@ -46,5 +46,16 @@ namespace Blog_management.DataBase.Reposity
             DBcontect.Add(user);
             return user;
         }
+        public static bool IsUserExitsByEmail(string email)
+        {
+            foreach (User user in DBcontect)
+            {
+                if (user.Email == email)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }
