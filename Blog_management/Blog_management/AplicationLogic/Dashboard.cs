@@ -42,7 +42,18 @@ namespace Blog_management.AplicationLogic
             {
                 Console.WriteLine(command);
             }
+            while(true)
+            {
 
+                Console.WriteLine("");
+                Console.Write("Please enter command : ");
+                string command = Console.ReadLine();
+                if (command == "/add-user")
+                {
+                    Autentication.Resgister();
+                }
+
+            }
 
 
         }
