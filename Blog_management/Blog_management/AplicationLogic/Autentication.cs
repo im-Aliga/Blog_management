@@ -84,6 +84,30 @@ namespace Blog_management.AplicationLogic
 
         }
 
+        public static void Login()
+        {
+            Console.Write("Please enter Email:  ");
+            string email = Console.ReadLine();
+            Console.Write("Please enter password:  ");
+            string password = Console.ReadLine();
+            if (UserReposity.GetUserByEmailAndPassword(email, password))
+            {
+                User user = UserReposity.GetUerByEmail(email);
+                Dashboard.CurrentUser = user;
+                if (user is Admin)
+                {
+                    Dashboard.AdminPanel();
+                }
+                if (user is User)
+                {
+                    Dashboard.UserPanel(email);
+                }
+
+            }
+
+
+        }
+
     }
 
 }
