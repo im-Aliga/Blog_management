@@ -76,12 +76,48 @@ namespace Blog_management.AplicationLogic.Services
 
                         }
 
+
                     }
 
 
 
 
                 }
+                else if (command == "/Lastname")
+                {
+                    Console.Write("Please enter owener's lastname: ");
+                    string lastName = Console.ReadLine();
+                    int count = 1;
+                    foreach (Blog blog in blogRepo.GetAll())
+                    {
+                        if (blog.Owner.LastName == lastName && blog.BlogStatus == BlogStatus.Approve)
+                        {
+                            Console.WriteLine(blog.BlogInfo());
 
+                            foreach (BlogComments comment in commentRepo.GetAll(c => c.WhichBlog == blog))
+                            {
+
+                                Console.WriteLine($"{count}{"."}  { comment.GetCommentInfo()}");
+                                count++;
+
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("this lastname's blog not found");
+                            break;
+                        }
+
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Command not found please check");
+                    Console.WriteLine(" ");
+                }
             }
+
+
+        }
+    }
 }
