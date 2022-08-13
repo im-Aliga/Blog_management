@@ -264,9 +264,31 @@ namespace Blog_management.AplicationLogic
 
     public static partial class Dashboard
     {
-        public static void UserPanel()
+        public static void UserPanel(string email)
         {
+            CommentReposity commentRepo = new CommentReposity();
 
+            BlogReposity blogRepo = new BlogReposity();
+
+            InboxReposity inboxRepo = new InboxReposity();
+
+            User user = UserReposity.GetUerByEmail(email);
+
+            Console.WriteLine($"user succesfully joined : {user.GetInfo()}");
+            string[] commands = { "/update-info",
+                                      "/report-user",
+                                      "/inbox",
+                                      "/add-comment",
+                                      "/blogs",
+                                      "/add-blog",
+                                      "/delete-blog",
+
+                                      "/log out" };
+
+            foreach (string command in commands)
+            {
+                Console.WriteLine(command);
+            }
         }
 
     }
