@@ -115,6 +115,10 @@ namespace Blog_management.AplicationLogic
                     Admin admin = new Admin(Autentication.GetName(), Autentication.GetLastname(), Autentication.GetEmail(), Autentication.GetPassword());
                     baserepo.Add(admin);
                 }
+                else if (command == "/show-admins")
+                {
+                    UserReposity.ShowAdmins();
+                }
 
             }
 
