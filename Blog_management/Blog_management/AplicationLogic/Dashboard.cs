@@ -311,6 +311,27 @@ namespace Blog_management.AplicationLogic
                         Console.WriteLine("This email is not your's");
                     }
                 }
+                else if (command == "/report-user")
+                {
+
+                    Console.Write("Please enter user's email :");
+                    string reportEmail = Console.ReadLine();
+                    Console.Write("Please enter report's content");
+                    string content = Console.ReadLine();
+
+
+                    User to = UserReposity.GetUerByEmail(reportEmail);
+                    if (to == null)
+                    {
+                        Console.WriteLine("This user not found");
+                    }
+                    else if (to == CurrentUser)
+                    {
+                        Console.WriteLine("This account is your's acoount");
+                    }
+                    ReportReposity.Add(CurrentUser, to, content);
+                    Console.WriteLine("report sended succesfully");
+                }
             }
         }
 
