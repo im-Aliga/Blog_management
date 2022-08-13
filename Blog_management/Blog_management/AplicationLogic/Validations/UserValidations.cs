@@ -64,5 +64,14 @@ namespace Blog_management.AplicationLogic.Validations
 
             return false;
         }
+        public static bool IsPasswordsMatch(string password, string confirmPassword)
+        {
+            if (confirmPassword == password)
+            {
+                return true;
+            }
+            Console.WriteLine("Password is not match");
+            return false;
+        }
     }
 }
