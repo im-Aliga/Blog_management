@@ -332,6 +332,11 @@ namespace Blog_management.AplicationLogic
                     ReportReposity.Add(CurrentUser, to, content);
                     Console.WriteLine("report sended succesfully");
                 }
+                else if (command == "/log out")
+                {
+                    Program.Main(new string[] { });
+
+                }
             }
         }
 
