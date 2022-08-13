@@ -369,6 +369,24 @@ namespace Blog_management.AplicationLogic
                         counter++;
                     }
                 }
+
+                else if (command == "/blogs")
+                {
+                    List<Blog> blogs = blogRepo.GetAll(b => b.Owner == CurrentUser);
+                    if (blogs != null)
+                    {
+                        int count = 1;
+                        foreach (Blog blog in blogs)
+                        {
+                            Console.WriteLine($"{count}." + blog.BlogInfo());
+                            count++;
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("empty");
+                    }
+                }
             }
         }
 
