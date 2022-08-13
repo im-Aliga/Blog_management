@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Blog_management.DataBase.Reposity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -71,6 +72,15 @@ namespace Blog_management.AplicationLogic.Validations
                 return true;
             }
             Console.WriteLine("Password is not match");
+            return false;
+        }
+        public static bool IsUserExitsUnique(string email)
+        {
+            if (UserReposity.IsUserExitsByEmail(email))
+            {
+                Console.WriteLine("User already exists");
+                return true;
+            }
             return false;
         }
     }
