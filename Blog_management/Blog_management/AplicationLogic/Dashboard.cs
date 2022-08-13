@@ -289,6 +289,29 @@ namespace Blog_management.AplicationLogic
             {
                 Console.WriteLine(command);
             }
+            while (true)
+            {
+                Console.WriteLine("");
+
+                Console.Write("Please enter command: ");
+
+                string command = Console.ReadLine();
+
+                if (command == "/update-info")
+                {
+                    if (user.Email == CurrentUser.Email)
+                    {
+                        User updateUser = new User(Autentication.GetName(), Autentication.GetLastname());
+                        UserReposity.UpdateForUser(email, updateUser);
+                        Console.WriteLine("update succesfully");
+
+                    }
+                    else
+                    {
+                        Console.WriteLine("This email is not your's");
+                    }
+                }
+            }
         }
 
     }
