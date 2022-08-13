@@ -14,7 +14,7 @@ namespace Blog_management.AplicationLogic
     {
         public static User CurrentUser { get; set; }
 
-        public static void AdminPAnel()
+        public static void AdminPanel()
         {
             Reposity<User, int> baserepo = new Reposity<User, int>();
 
