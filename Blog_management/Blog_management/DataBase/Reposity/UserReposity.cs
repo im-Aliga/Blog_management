@@ -33,6 +33,7 @@ namespace Blog_management.DataBase.Reposity
             DBcontect.Add(new User("Ceyhun", "Hacizade", "haci@gmail.com", "123321", 3));
             DBcontect.Add(new User("Revan", "Mahmudov", "mahmud@gmail.com", "123321", 4));
         }
+
         public static User AddUser(string firstName, string lastName, string email, string password)
         {
             User user = new User(firstName, lastName, email, password, IdCounter);
@@ -40,16 +41,19 @@ namespace Blog_management.DataBase.Reposity
             return user;
 
         }
+
         public static User AddUser(string firstName, string lastName, string email, string password, int id)
         {
             User user = new User(firstName, lastName, email, password, id);
             DBcontect.Add(user);
             return user;
         }
+
         public static bool IsUserExitsByEmail(string email)
         {
             foreach (User user in DBcontect)
             {
+              
                 if (user.Email == email)
                 {
                     return true;
@@ -57,6 +61,7 @@ namespace Blog_management.DataBase.Reposity
             }
             return false;
         }
+
         public static bool GetUserByEmailAndPassword(string email, string password)
         {
             foreach (User user in DBcontect)
@@ -69,6 +74,7 @@ namespace Blog_management.DataBase.Reposity
             }
             return false;
         }
+
         public static User GetUserById(int id)
         {
             foreach (User user in DBcontect)
@@ -81,6 +87,7 @@ namespace Blog_management.DataBase.Reposity
             }
             return null;
         }
+
         public static User GetUerByEmail(string email)
         {
             foreach (User user in DBcontect)
@@ -92,6 +99,7 @@ namespace Blog_management.DataBase.Reposity
             }
             return null;
         }
+
         //public static User Update(int id, string firstname)
         //{
         //    User user = GetUserById(id);
@@ -99,6 +107,7 @@ namespace Blog_management.DataBase.Reposity
         //    user.UpdateAt = DateTime.Now;
         //    return user;
         //}
+
         public static User UpdateForUser(string email, User user)
         {
             User updateUsers = GetUerByEmail(email);
@@ -107,6 +116,7 @@ namespace Blog_management.DataBase.Reposity
             return updateUsers;
 
         }
+
         public static User UpdateForAdmin(string email, Admin admin)
         {
             User updateAdmin = GetUerByEmail(email);
@@ -115,6 +125,7 @@ namespace Blog_management.DataBase.Reposity
             return updateAdmin;
 
         }
+
         public static void ShowAdmins()
         {
             Reposity<User, int> baseRepo = new Reposity<User, int>();
@@ -128,13 +139,19 @@ namespace Blog_management.DataBase.Reposity
             }
 
         }
+
         public static void ShowUsers()
         {
             Reposity<User, int> baseRepo = new Reposity<User, int>();
             List<User> users = baseRepo.GetAll();
             foreach (User user in users)
             {
-                if (user is not Admin)
+                if(user == null)
+                {
+                    Console.WriteLine("User not found");
+
+                }
+                else if (user is not Admin)
                 {
                     Console.WriteLine(user.GetInfo());
                 }

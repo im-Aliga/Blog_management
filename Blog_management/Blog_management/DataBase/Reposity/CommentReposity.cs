@@ -10,6 +10,7 @@ namespace Blog_management.DataBase.Reposity
     public class CommentReposity : Common.Reposity<BlogComments, int>
     {
         public static BlogReposity blogRepo = new BlogReposity();
+
         static CommentReposity()
         {
 

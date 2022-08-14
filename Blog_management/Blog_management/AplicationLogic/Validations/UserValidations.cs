@@ -23,6 +23,7 @@ namespace Blog_management.AplicationLogic.Validations
 
             return false;
         }
+
         public static bool IsValidLastName(string lastName)
         {
             Regex regex = new Regex(@"^(?=[A-Z]{1})([A-Za-z]{3,30})$");
@@ -35,6 +36,7 @@ namespace Blog_management.AplicationLogic.Validations
             Console.WriteLine("The last name you entered is incorrect, make sure that the last name contains only letters, the first letter is capitalized, and the length is greater than 3 and less than 30.");
             return false;
         }
+
         public static bool IsValidEmail(string email)
         {
             Regex regex = new Regex(@"^[A-Za-z0-9]{3,20}@code\.edu\.az$");
@@ -51,6 +53,7 @@ namespace Blog_management.AplicationLogic.Validations
 
             return false;
         }
+
         public static bool IsValidPassword(string password)
         {
             Regex regex = new Regex("^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).{8,}$");
@@ -65,6 +68,7 @@ namespace Blog_management.AplicationLogic.Validations
 
             return false;
         }
+
         public static bool IsPasswordsMatch(string password, string confirmPassword)
         {
             if (confirmPassword == password)
@@ -74,6 +78,7 @@ namespace Blog_management.AplicationLogic.Validations
             Console.WriteLine("Password is not match");
             return false;
         }
+
         public static bool IsUserExitsUnique(string email)
         {
             if (UserReposity.IsUserExitsByEmail(email))

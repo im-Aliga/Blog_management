@@ -17,5 +17,6 @@ namespace Blog_management.AplicationLogic.Validations
             Console.WriteLine("Length sould be between 10 and 35");
             return false;
         }
+
     }
 }

@@ -55,20 +55,24 @@ namespace Blog_management.AplicationLogic
                 }
                 else if (command == "/update-user")
                 {
-                    Console.Write("Please enter user's email: ");
-                    string email = Console.ReadLine();
-                    User user = UserReposity.GetUerByEmail(email);
-                    if (user == null)
+                    while (true)
                     {
-                        Console.WriteLine("User not found!");
+
+                        Console.Write("Please enter user's email: ");
+                        string email = Console.ReadLine();
+                        User user = UserReposity.GetUerByEmail(email);
+                        if (user == null)
+                        {
+                            Console.WriteLine("User not found!");
+                        }
+                        else if (user is Admin)
+                        {
+                            Console.WriteLine("This email is admin's email");
+                        }
+                        User updateUser = new User(Autentication.GetName(), Autentication.GetLastname());
+                        UserReposity.UpdateForUser(email, updateUser);
+                        Console.WriteLine("user hass been update");
                     }
-                    else if (user is Admin)
-                    {
-                        Console.WriteLine("This email is admin's email");
-                    }
-                    User updateUser = new User(Autentication.GetName(), Autentication.GetLastname());
-                    UserReposity.UpdateForUser(email, updateUser);
-                    Console.WriteLine("user hass been update");
 
                 }
                 else if (command == "/reports")
@@ -95,19 +99,23 @@ namespace Blog_management.AplicationLogic
                 }
                 else if (command == "/remove-user")
                 {
-                    Console.Write("Please enter user's email");
-                    string email = Console.ReadLine();
-                    User user = UserReposity.GetUerByEmail(email);
-                    if (user == null)
+                    while (true)
                     {
-                        Console.WriteLine("User is not found!");
+
+                        Console.Write("Please enter user's email");
+                        string email = Console.ReadLine();
+                        User user = UserReposity.GetUerByEmail(email);
+                        if (user == null)
+                        {
+                            Console.WriteLine("User is not found!");
+                        }
+                        else if (user is Admin)
+                        {
+                            Console.WriteLine("This email is Admin's email");
+                        }
+                        baserepo.Delete(user);
+                        Console.WriteLine("user deleted succesfully");
                     }
-                    else if (user is Admin)
-                    {
-                        Console.WriteLine("This email is Admin's email");
-                    }
-                    baserepo.Delete(user);
-                    Console.WriteLine("user deleted succesfully");
 
 
                 }
@@ -197,6 +205,8 @@ namespace Blog_management.AplicationLogic
                         {
                             Console.WriteLine(blog.BlogInfo());
                         }
+                      
+                        
                     }
 
                 }

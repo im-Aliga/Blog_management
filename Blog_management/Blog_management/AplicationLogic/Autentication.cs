@@ -29,6 +29,7 @@ namespace Blog_management.AplicationLogic
             }
 
         }
+
         public static string GetName()
         {
             Console.Write("Please enter user's name : ");
@@ -40,6 +41,7 @@ namespace Blog_management.AplicationLogic
             }
             return firstName;
         }
+
         public static string GetLastname()
         {
 
@@ -52,6 +54,7 @@ namespace Blog_management.AplicationLogic
             }
             return lastname;
         }
+
         public static string GetEmail()
         {
             Console.Write("Please enter user's email : ");
@@ -63,6 +66,7 @@ namespace Blog_management.AplicationLogic
             }
             return email;
         }
+
         public static string GetPassword()
         {
             Console.Write("Please enter user's password : ");

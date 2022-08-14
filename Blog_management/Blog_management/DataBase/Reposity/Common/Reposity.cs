@@ -17,10 +17,12 @@ namespace Blog_management.DataBase.Reposity.Common
             DBcontect.Add(entry);
             return entry;
         }
+
         public List<TEntity> GetAll()
         {
             return DBcontect;
         }
+
         public List<TEntity> GetAll(Predicate<TEntity> predicate)
         {
             List<TEntity> entities = new List<TEntity>();
@@ -33,6 +35,7 @@ namespace Blog_management.DataBase.Reposity.Common
             }
             return entities;
         }
+
         public TEntity Get(Predicate<TEntity> expression)
         {
             foreach (TEntity entry in DBcontect)
@@ -44,6 +47,7 @@ namespace Blog_management.DataBase.Reposity.Common
             }
             return null;
         }
+
         public TEntity GetById(Tid id)
         {
             foreach (TEntity entry in DBcontect)
@@ -55,6 +59,7 @@ namespace Blog_management.DataBase.Reposity.Common
             }
             return default(TEntity);
         }
+
         public void Delete(TEntity entry)
         {
             DBcontect.Remove(entry);
