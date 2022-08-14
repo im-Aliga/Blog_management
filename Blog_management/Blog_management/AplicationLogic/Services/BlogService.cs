@@ -126,26 +126,26 @@ namespace Blog_management.AplicationLogic.Services
             string blogCode = Console.ReadLine();
             Blog blog = blogRepo.GetById(blogCode);
             int count = 1;
-            if (blog != null)
+
+
+            if (blog != null && blog.BlogStatus == BlogStatus.Approve)
             {
-
-                if (blog.BlogStatus == BlogStatus.Approve)
+                Console.WriteLine(blog.BlogInfo());
+                foreach (BlogComments comment in commentRepo.GetAll(c => c.WhichBlog == blog))
                 {
-                    Console.WriteLine(blog.BlogInfo());
-                    foreach (BlogComments comment in commentRepo.GetAll(c => c.WhichBlog == blog))
-                    {
-                        Console.WriteLine($"{count}" + comment.GetCommentInfo());
-                        count++;
+                    Console.WriteLine($"{count}" + comment.GetCommentInfo());
+                    count++;
 
-
-                    }
 
                 }
             }
             else
             {
-                Console.WriteLine("This code's blog not found");
+                Console.WriteLine("blog code not found");
             }
+
+
+
 
         }
         public static string GetComment()
