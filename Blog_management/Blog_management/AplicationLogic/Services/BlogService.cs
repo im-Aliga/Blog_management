@@ -34,11 +34,9 @@ namespace Blog_management.AplicationLogic.Services
                         Console.WriteLine(" ");
                     }
                 }
-
-
             }
-
         }
+
         public static void FindBlogByFilter()
         {
             Console.WriteLine("/Title");
@@ -61,18 +59,14 @@ namespace Blog_management.AplicationLogic.Services
 
                             foreach (BlogComments comment in commentRepo.GetAll(c => c.WhichBlog == blog))
                             {
-
-
                                 Console.WriteLine($"{count}{"."}  { comment.GetCommentInfo()}");
                                 count++;
-
                             }
                         }
                         else
                         {
                             Console.WriteLine("this title blog's Not found");
                             break;
-
                         }
                     }
                 }
@@ -89,10 +83,8 @@ namespace Blog_management.AplicationLogic.Services
 
                             foreach (BlogComments comment in commentRepo.GetAll(c => c.WhichBlog == blog))
                             {
-
                                 Console.WriteLine($"{count}{"."}  { comment.GetCommentInfo()}");
                                 count++;
-
                             }
                         }
                         else
@@ -100,7 +92,6 @@ namespace Blog_management.AplicationLogic.Services
                             Console.WriteLine("this lastname's blog not found");
                             break;
                         }
-
                     }
                 }
                 else
@@ -112,37 +103,28 @@ namespace Blog_management.AplicationLogic.Services
 
 
         }
+
         public static void FindBlogByCode()
         {
-           
-
-                Console.Write("Please enter blog code: ");
-                string blogCode = Console.ReadLine();
-                Blog blog = blogRepo.GetById(blogCode);
-                int count = 1;
-
-
-                if (blog != null && blog.BlogStatus == BlogStatus.Approve)
+            Console.Write("Please enter blog code: ");
+            string blogCode = Console.ReadLine();
+            Blog blog = blogRepo.GetById(blogCode);
+            int count = 1;
+            if (blog != null && blog.BlogStatus == BlogStatus.Approve)
+            {
+                Console.WriteLine(blog.BlogInfo());
+                foreach (BlogComments comment in commentRepo.GetAll(c => c.WhichBlog == blog))
                 {
-                    Console.WriteLine(blog.BlogInfo());
-                    foreach (BlogComments comment in commentRepo.GetAll(c => c.WhichBlog == blog))
-                    {
-                        Console.WriteLine($"{count}" + comment.GetCommentInfo());
-                        count++;
-
-
-                    }
+                    Console.WriteLine($"{count}" + comment.GetCommentInfo());
+                    count++;
                 }
-                else
-                {
-                    Console.WriteLine("blog code not found");
-                }
-            
-
-
-
-
+            }
+            else
+            {
+                Console.WriteLine("blog code not found");
+            }
         }
+
         public static string GetComment()
         {
             Console.Write("Please enter comment content: ");
@@ -154,6 +136,7 @@ namespace Blog_management.AplicationLogic.Services
             }
             return commentContent;
         }
+
         public static string GetBlogTitle()
         {
             Console.Write("Please enter blog title: ");
@@ -166,6 +149,7 @@ namespace Blog_management.AplicationLogic.Services
             return blogTitle;
 
         }
+
         public static string GetBlogContent()
         {
             Console.Write("Please enter blog content: ");

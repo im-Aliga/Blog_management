@@ -26,5 +26,9 @@ namespace Blog_management.DataBase.Reposity
             DBcontect.Add(report);
             return report;
         }
+        static ReportReposity()
+        {
+            DBcontect.Add(new Report("salam xaiw edirem bu user i bloklayin", UserReposity.GetUerByEmail("haci@gmail.com"), UserReposity.GetUerByEmail("ayroali@gmail.com"), 1));
+        }
     }
 }

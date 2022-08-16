@@ -22,8 +22,8 @@ namespace Blog_management.DataBase.Reposity
             {
                 List<Blog> blogs = bb.GetAll();
               
-                var go = true;
-                var newCode = "";
+                bool  go = true;
+                string newCode = "";
 
                 
 
